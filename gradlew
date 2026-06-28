@@ -1,38 +1,31 @@
-#!/usr/bin/env sh
+#!/bin/sh
+set -e
 
-APP_NAME="Gradle"
-APP_BASE_NAME=`basename "$0"`
+GRADLE_OPTS="${GRADLE_OPTS:-}"
+JAVA_OPTS="${JAVA_OPTS:-}"
 
-DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
+CLASSPATH="${APP_HOME}/gradle/wrapper/gradle-wrapper.jar"
 
-MAX_FD="maximum"
+GRADLE_USER_HOME="${GRADLE_USER_HOME:-${HOME}/.gradle}"
 
-warn () {
-    echo "$*"
+find_java_home() {
+  if [ -n "${JAVA_HOME}" ]; then
+    echo "${JAVA_HOME}"
+  else
+    echo ""
+  fi
 }
 
-die () {
-    echo
-    echo "$*"
-    echo
-    exit 1
-}
+JAVA_HOME="$(find_java_home)"
 
-OS="`uname`"
-case "$OS" in
-  CYGWIN* )
-    cygwin=true
-    ;;
-  Darwin* )
-    darwin=true
-    ;;
-  MINGW* )
-    msys=true
-    ;;
-esac
+if [ -z "${JAVA_HOME}" ]; then
+  JAVACMD="java"
+else
+  JAVACMD="${JAVA_HOME}/bin/java"
+fi
 
-GRADLE_USER_HOME="${GRADLE_USER_HOME:-$HOME/.gradle}"
-
-CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper.jar
-
-exec "$JAVACMD" "${JVM_OPTS[@]}" -classpath "$CLASSPATH" org.gradle.wrapper.GradleWrapperMain "$@"
+exec "${JAVACMD}" \
+  ${JAVA_OPTS} \
+  -classpath "${CLASSPATH}" \
+  org.gradle.wrapper.GradleWrapperMain \
+  "$@"
