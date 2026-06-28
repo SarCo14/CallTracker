@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue">#185FA5</color>
+    <color name="blue_light">#E6F1FB</color>
+    <color name="green">#0F6E56</color>
+    <color name="green_light">#E1F5EE</color>
+    <color name="red">#A32D2D</color>
+    <color name="red_light">#FCEBEB</color>
+    <color name="orange">#E65100</color>
+    <color name="bg_primary">#FFFFFF</color>
+    <color name="bg_secondary">#F5F5F3</color>
+    <color name="text_primary">#1A1A18</color>
+    <color name="text_secondary">#6B6B68</color>
+    <color name="border">#1F000000</color>
+</resources>
